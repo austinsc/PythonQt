@@ -82,7 +82,7 @@ FileModelItem Binder::run(AST *node)
   _M_current_access = CodeModel::Public;
 
   _M_current_file = model()->create<FileModelItem>();
-  updateItemPosition (_M_current_file->toItem(), node);
+  updateItemPosition (_M_current_file.data()->toItem(), node);
   visit(node);
   FileModelItem result = _M_current_file;
 
@@ -93,9 +93,9 @@ FileModelItem Binder::run(AST *node)
 
 ScopeModelItem Binder::currentScope()
 {
-  if (_M_current_class)
+  if (_M_current_class.data())
     return model_static_cast<ScopeModelItem>(_M_current_class);
-  else if (_M_current_namespace)
+  else if (_M_current_namespace.data())
     return model_static_cast<ScopeModelItem>(_M_current_namespace);
 
   return model_static_cast<ScopeModelItem>(_M_current_file);
@@ -260,7 +260,7 @@ void Binder::declare_symbol(SimpleDeclarationAST *node, InitDeclaratorAST *init_
 
   CodeModelFinder finder(model(), this);
   ScopeModelItem symbolScope = finder.resolveScope(id, currentScope());
-  if (! symbolScope)
+  if (symbolScope.data() == NULL)
     {
       name_cc.run(id);
       std::cerr << "** WARNING scope not found for symbol:"
@@ -275,13 +275,13 @@ void Binder::declare_symbol(SimpleDeclarationAST *node, InitDeclaratorAST *init_
       name_cc.run(id->unqualified_name);
 
       FunctionModelItem fun = model()->create<FunctionModelItem>();
-      updateItemPosition (fun->toItem(), node);
-      fun->setAccessPolicy(_M_current_access);
-      fun->setFunctionType(_M_current_function_type);
-      fun->setName(name_cc.name());
-      fun->setAbstract(init_declarator->initializer != 0);
-      fun->setConstant(declarator->fun_cv != 0);
-      fun->setTemplateParameters(_M_current_template_parameters);
+      updateItemPosition (fun.data()->toItem(), node);
+      fun.data()->setAccessPolicy(_M_current_access);
+      fun.data()->setFunctionType(_M_current_function_type);
+      fun.data()->setName(name_cc.name());
+      fun.data()->setAbstract(init_declarator->initializer != 0);
+      fun.data()->setConstant(declarator->fun_cv != 0);
+      fun.data()->setTemplateParameters(_M_current_template_parameters);
       applyStorageSpecifiers(node->storage_specifiers, model_static_cast<MemberModelItem>(fun));
       applyFunctionSpecifiers(node->function_specifiers, fun);
 
@@ -290,25 +290,25 @@ void Binder::declare_symbol(SimpleDeclarationAST *node, InitDeclaratorAST *init_
                                                          declarator,
                                                          this);
 
-      fun->setType(qualifyType(typeInfo, symbolScope->qualifiedName()));
+      fun.data()->setType(qualifyType(typeInfo, symbolScope.data()->qualifiedName()));
 
 
-      fun->setVariadics (decl_cc.isVariadics ());
+      fun.data()->setVariadics (decl_cc.isVariadics ());
 
       // ... and the signature
       foreach (DeclaratorCompiler::Parameter p, decl_cc.parameters())
         {
           ArgumentModelItem arg = model()->create<ArgumentModelItem>();
-          arg->setType(qualifyType(p.type, _M_context));
-          arg->setName(p.name);
-          arg->setDefaultValue(p.defaultValue);
+          arg.data()->setType(qualifyType(p.type, _M_context));
+          arg.data()->setName(p.name);
+          arg.data()->setDefaultValue(p.defaultValue);
           if (p.defaultValue)
-              arg->setDefaultValueExpression(p.defaultValueExpression);
-          fun->addArgument(arg);
+              arg.data()->setDefaultValueExpression(p.defaultValueExpression);
+          fun.data()->addArgument(arg);
         }
 
-      fun->setScope(symbolScope->qualifiedName());
-      symbolScope->addFunction(fun);
+      fun.data()->setScope(symbolScope.data()->qualifiedName());
+      symbolScope.data()->addFunction(fun);
     }
   else
     {

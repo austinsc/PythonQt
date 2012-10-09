@@ -97,6 +97,8 @@ struct Preprocess
             includes << (frameworkDir + "/QtCore.framework/Headers");
             includes << (frameworkDir + "/QtGui.framework/Headers");
             includes << (frameworkDir + "/QtOpenGL.framework/Headers");
+            includes << (frameworkDir + "/QtWidgets.framework/Headers");
+            includes << (frameworkDir + "/QtPrintSupport.framework/Headers");
             includes << frameworkDir;
 #else
             qWarning("QTDIR environment variable not set. This may cause problems with finding the necessary include files.");
@@ -108,11 +110,13 @@ struct Preprocess
             includes << (qtdir + "/QtCore");
             includes << (qtdir + "/QtGui");
             includes << (qtdir + "/QtOpenGL");
+            includes << (qtdir + "/QtWidgets");
+            includes << (qtdir + "/QtPrintSupport");
             includes << qtdir;
         }
 
         foreach (QString include, includes)
-            preprocess.push_include_path(QDir::convertSeparators(include).toStdString());        
+            preprocess.push_include_path(QDir::toNativeSeparators(include).toStdString());
 
         QString currentDir = QDir::current().absolutePath();
         QFileInfo sourceInfo(sourceFile);

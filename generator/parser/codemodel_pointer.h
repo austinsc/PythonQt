@@ -115,7 +115,13 @@ private:
         QAtomicPointer<T>::operator=(o);
         return *this;
     }
-
+    inline T &operator*() { return *data(); }
+    inline const T &operator*() const { return *data(); }
+    inline T *operator->() { return data(); }
+    inline const T *operator->() const { return data(); }
+    inline operator T *() { return data(); }
+    inline operator const T *() const { return data(); }
+    inline bool operator!() const { return !*this; }
     inline T *data() { return (T *) *this; }
     inline const T *data() const { return (const T *) *this; }
     inline const T *constData() const { return (const T *) *this; }
