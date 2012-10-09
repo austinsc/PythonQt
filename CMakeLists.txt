@@ -9,7 +9,7 @@ include(CTestUseLaunchers OPTIONAL)
 #-----------------------------------------------------------------------------
 # Python libraries
 
-find_package(PythonLibs REQUIRED)
+find_package(Python REQUIRED)
 include_directories("${PYTHON_INCLUDE_DIR}")
 add_definitions(-DPYTHONQT_USE_RELEASE_PYTHON_FALLBACK)
 
@@ -44,31 +44,15 @@ endif()
 #-----------------------------------------------------------------------------
 # Setup Qt
 
-set(minimum_required_qt_version "4.6.2")
-
-find_package(Qt4)
-
-if(QT4_FOUND)
-
-  set(found_qt_version ${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH})
-
-  if(${found_qt_version} VERSION_LESS ${minimum_required_qt_version})
-      message(FATAL_ERROR "error: PythonQt requires Qt >= ${minimum_required_qt_version} -- you cannot use Qt ${found_qt_version}.")
-  endif()
-  
-  # Enable required qt module
-  foreach(qtlib network opengl sql svg uitools webkit xml xmlpatterns)
-    string(TOUPPER ${qtlib} qtlib_uppercase)
-    if (NOT ${QT_QT${qtlib_uppercase}_FOUND})
-      message(FATAL_ERROR "QT_QT${${qtlib_uppercase} *not* FOUND - Try to disable PythonQt_Wrap_Qt${qtlib}")
-    endif()
-    set(QT_USE_QT${qtlib_uppercase} ${PythonQt_Wrap_Qt${qtlib}})
-  endforeach()
-  
-  include(${QT_USE_FILE})
-else()
-  message(FATAL_ERROR "error: Qt4 was not found on your system. You probably need to set the QT_QMAKE_EXECUTABLE variable")
-endif()
+find_package(Qt5Core)
+find_package(Qt5Gui)
+find_package(Qt5Help)
+find_package(Qt5Widgets)
+find_package(Qt5Xml)
+find_package(Qt5Network)
+find_package(Qt5OpenGL)
+find_package(Qt53D)
+find_package(Qt5PrintSupport)
 
 #-----------------------------------------------------------------------------
 # The variable "generated_cpp_suffix" allows to conditionnally compile the generated wrappers 
@@ -192,9 +176,9 @@ set(qrc_sources )
 
 #-----------------------------------------------------------------------------
 # Do wrapping
-qt4_wrap_cpp(gen_moc_sources ${moc_sources})
-qt4_wrap_ui(gen_ui_sources ${ui_sources})
-qt4_add_resources(gen_qrc_sources ${qrc_sources})
+qt5_wrap_cpp(gen_moc_sources ${moc_sources})
+qt5_wrap_ui(gen_ui_sources ${ui_sources})
+qt5_add_resources(gen_qrc_sources ${qrc_sources})
 
 #-----------------------------------------------------------------------------
 # Build the library
