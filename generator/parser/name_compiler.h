@@ -44,7 +44,7 @@
 #define NAME_COMPILER_H
 
 #include "default_visitor.h"
-#include <QtCore/QStringList>
+#include <QStringList>
 
 class TokenStream;
 class Binder;

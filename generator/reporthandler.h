@@ -42,8 +42,8 @@
 #ifndef REPORTHANDLER_H
 #define REPORTHANDLER_H
 
-#include <QtCore/QString>
-#include <QtCore/QSet>
+#include <QString>
+#include <QSet>
 
 class ReportHandler
 {

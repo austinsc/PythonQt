@@ -47,7 +47,7 @@
 #include "symbol.h"
 #include "binder.h"
 
-#include <QtCore/qdebug.h>
+#include <qdebug.h>
 
 NameCompiler::NameCompiler(Binder *binder)
   : _M_binder (binder), _M_token_stream (binder->tokenStream ())

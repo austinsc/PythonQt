@@ -42,9 +42,9 @@
 #ifndef PREPROCESSOR_H
 #define PREPROCESSOR_H
 
-#include <QtCore/qglobal.h>
-#include <QtCore/qstring.h>
-#include <QtCore/qstringlist.h>
+#include <qglobal.h>
+#include <qstring.h>
+#include <qstringlist.h>
 
 class QByteArray;
 class PreprocessorPrivate;

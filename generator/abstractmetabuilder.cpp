@@ -51,12 +51,12 @@
 #include "parser.h"
 #include "tokens.h"
 
-#include <QtCore/QDebug>
-#include <QtCore/QFile>
-#include <QtCore/QFileInfo>
-#include <QtCore/QTextCodec>
-#include <QtCore/QTextStream>
-#include <QtCore/QVariant>
+#include <QDebug>
+#include <QFile>
+#include <QFileInfo>
+#include <QTextCodec>
+#include <QTextStream>
+#include <QVariant>
 
 static QString strip_template_args(const QString &name)
 {

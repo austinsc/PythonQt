@@ -51,7 +51,7 @@ static void includeFileHook(const std::string &, const std::string &, FILE *);
 
 using namespace rpp;
 
-#include <QtCore/QtCore>
+#include <QtCore>
 
 class PreprocessorPrivate
 {

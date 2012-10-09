@@ -42,8 +42,8 @@
 
 #include "dumptree.h"
 
-#include <QtCore/QString>
-#include <QtCore/qdebug.h>
+#include <QString>
+#include <qdebug.h>
 
 static char const * const names[] = {
   0,

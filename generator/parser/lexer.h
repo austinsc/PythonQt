@@ -45,7 +45,7 @@
 
 #include "symbol.h"
 
-#include <QtCore/QString>
+#include <QString>
 #include <cstdlib>
 #include <cassert>
 

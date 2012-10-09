@@ -43,8 +43,8 @@
 #ifndef CLASS_COMPILER_H
 #define CLASS_COMPILER_H
 
-#include <QtCore/qglobal.h>
-#include <QtCore/QStringList>
+#include <qglobal.h>
+#include <QStringList>
 
 #include "default_visitor.h"
 #include "name_compiler.h"

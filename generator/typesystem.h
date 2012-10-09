@@ -42,10 +42,10 @@
 #ifndef TYPESYSTEM_H
 #define TYPESYSTEM_H
 
-#include <QtCore/QHash>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QMap>
+#include <QHash>
+#include <QString>
+#include <QStringList>
+#include <QMap>
 #include <QDebug>
 
 class Indentor;

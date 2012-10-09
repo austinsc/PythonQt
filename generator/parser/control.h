@@ -46,7 +46,7 @@
 #include "symbol.h"
 #include "smallobject.h"
 
-#include <QtCore/QHash>
+#include <QHash>
 
 struct Declarator;
 struct Type;

@@ -40,7 +40,7 @@
 ****************************************************************************/
 
 
-#include <QtCore/qglobal.h>
+#include <qglobal.h>
 
 #include "tokens.h"
 

@@ -40,8 +40,8 @@
 ****************************************************************************/
 
 #define QT_NO_STL
-#include <QtCore/QtCore>
-#include <QtGui/QtGui>
+#include <QtCore>
+#include <QtWidgets>
 #include <QtNetwork/QtNetwork>
 #include <QtSql/QtSql>
 #include <QtSvg/QtSvg>

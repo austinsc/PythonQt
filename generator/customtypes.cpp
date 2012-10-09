@@ -43,8 +43,8 @@
 
 #include "metajava.h"
 
-#include <QtCore/QDebug>
-#include <QtCore/QTextStream>
+#include <QDebug>
+#include <QTextStream>
 
 
 void QModelIndexTypeEntry::generateCppJavaToQt(QTextStream &s,

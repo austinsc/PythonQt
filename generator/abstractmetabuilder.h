@@ -47,7 +47,7 @@
 #include "typesystem.h"
 #include "typeparser.h"
 
-#include <QtCore/QSet>
+#include <QSet>
 
 class AbstractMetaBuilder
 {

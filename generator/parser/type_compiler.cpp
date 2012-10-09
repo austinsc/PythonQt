@@ -49,7 +49,7 @@
 #include "tokens.h"
 #include "binder.h"
 
-#include <QtCore/QString>
+#include <QString>
 
 TypeCompiler::TypeCompiler(Binder *binder)
   : _M_binder (binder), _M_token_stream(binder->tokenStream ())

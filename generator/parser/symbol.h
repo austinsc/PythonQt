@@ -43,11 +43,11 @@
 #ifndef SYMBOL_H
 #define SYMBOL_H
 
-#include <QtCore/QString>
+#include <QString>
 #include <cstring>
 
-#include <QtCore/QHash>
-#include <QtCore/QPair>
+#include <QHash>
+#include <QPair>
 
 struct NameSymbol
 {

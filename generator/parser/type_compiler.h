@@ -45,9 +45,9 @@
 
 #include "default_visitor.h"
 
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QList>
+#include <QString>
+#include <QStringList>
+#include <QList>
 
 class TokenStream;
 class Binder;

@@ -46,11 +46,11 @@
 #include "codemodel_fwd.h"
 #include <codemodel_pointer.h>
 
-#include <QtCore/QHash>
-#include <QtCore/QList>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QVector>
+#include <QHash>
+#include <QList>
+#include <QString>
+#include <QStringList>
+#include <QVector>
 
 #define DECLARE_MODEL_NODE(k) \
     enum { __node_kind = Kind_##k }; \

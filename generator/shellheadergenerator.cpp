@@ -42,7 +42,7 @@
 #include "shellheadergenerator.h"
 #include "fileout.h"
 
-#include <QtCore/QDir>
+#include <QDir>
 
 #include <qdebug.h>
 

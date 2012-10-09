@@ -46,7 +46,7 @@
 #include "ast.h"
 #include "lexer.h"
 
-#include <QtCore/QString>
+#include <QString>
 
 class FileSymbol;
 class Control;
